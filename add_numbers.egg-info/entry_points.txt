@@ -1,0 +1,2 @@
+[console_scripts]
+add = add_numbers.add:main

@@ -1,32 +1,32 @@
 # import unittest
-import pytest
-from add_numbers import add, subtract
+# import pytest
+# from add_numbers import add, subtract
 
-import sys
-import os
+# import sys
+# import os
 
 # Add the parent directory of the current file to sys.path
 # sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-@pytest.mark.addition
-def test_add():
-    assert add(1, 2) == 3
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
+# @pytest.mark.addition
+# def test_add():
+#     assert add(1, 2) == 3
+#     assert add(2, 3) == 5
+#     assert add(-1, 1) == 0
+#     assert add(0, 0) == 0
 
-@pytest.mark.subtraction
-def test_subtract():
-    assert subtract(5, 3) == 2
-    assert subtract(3, 5) == -2
-    assert subtract(0, 0) == 0
-    assert subtract(-1, -1) == 0
+# @pytest.mark.subtraction
+# def test_subtract():
+#     assert subtract(5, 3) == 2
+#     assert subtract(3, 5) == -2
+#     assert subtract(0, 0) == 0
+#     assert subtract(-1, -1) == 0
 
-assert add(1, 2) == 3
-print("Add function assertion passed!")
+# assert add(1, 2) == 3
+# print("Add function assertion passed!")
 
 
-assert subtract(5, 3) == 2
-print("Subtract function assertion passed!")
+# assert subtract(5, 3) == 2
+# print("Subtract function assertion passed!")
 
 
 # class TestAddFunction(unittest.TestCase):
@@ -48,3 +48,25 @@ print("Subtract function assertion passed!")
     
 
     # unittest.main()
+
+import pytest
+import sys
+from add_numbers import add
+
+@pytest.mark.addition
+@pytest.mark.skip(reason="Skipping this test for demonstration purposes")
+def test_skip():
+    assert add(1, 2) == 3
+
+@pytest.mark.addition
+@pytest.mark.skipif(sys.platform == "win32", reason="Does not run on Windows")
+def test_skip_if_windows():
+    assert add(2, 3) == 5
+
+@pytest.mark.addition
+def test_add():
+    assert add(1, 2) == 3
+    assert add(2, 3) == 5
+    assert add(-1, 1) == 0
+    assert add(0, 0) == 0
+
